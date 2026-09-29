@@ -52,7 +52,7 @@ function centre() {
 
 fetch("/api/transcript").then(r => r.json()).then(data => {
   segs = data; tx.innerHTML = "";
-  if (!segs.length) { tx.innerHTML = '<p class="empty">A transcrição ainda não foi gerada.</p>'; return; }
+  if (!segs.length) { tx.innerHTML = '<p class="empty">Transcrição indisponível.</p>'; return; }
   els = segs.map(s => {
     const p = document.createElement("p");
     p.textContent = s.text; p.title = fmt(s.start);
