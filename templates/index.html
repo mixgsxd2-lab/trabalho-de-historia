@@ -4,34 +4,49 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Holocausto: o pós-guerra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div id="bg"></div>
-<div id="veil"></div>
+<div id="bg"><div class="layer a"></div><div class="layer b"></div></div>
+<div id="tint"></div><div id="grain"></div>
 
 <main>
-  <header>
-    <p class="tag">Podcast · História</p>
-    <h1>Holocausto: o pós-guerra</h1>
+  <header class="hero">
+    <span class="pill">Podcast · História</span>
+    <h1>Holocausto:<br><em>o pós-guerra</em></h1>
+    <p>O que veio depois — memória, justiça e reconstrução.</p>
   </header>
 
-  <section class="player">
-    <button id="play" aria-label="Tocar">
-      <svg id="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      <svg id="ico-pause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-    </button>
+  <section class="player glass">
+    <div class="controls">
+      <button class="ctl" id="back" aria-label="Voltar 15 segundos" title="-15s">
+        <svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg><b>15</b>
+      </button>
+      <button id="play" aria-label="Tocar">
+        <svg id="ico-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.5-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>
+        <svg id="ico-pause" viewBox="0 0 24 24" hidden><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg>
+      </button>
+      <button class="ctl" id="fwd" aria-label="Avançar 15 segundos" title="+15s">
+        <svg viewBox="0 0 24 24" style="transform:scaleX(-1)"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg><b>15</b>
+      </button>
+    </div>
     <div class="bar">
-      <input id="seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posição">
+      <input id="seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Posição">
       <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
     </div>
-    <button id="speed" aria-label="Velocidade">1x</button>
+    <button id="speed" aria-label="Velocidade"><span>1x</span></button>
     <audio id="audio" src="{{ url_for('static', filename='audio/podcast.mp3') }}" preload="metadata"></audio>
   </section>
 
-  <section class="transcript">
-    <h2>Transcrição</h2>
-    <div id="tx"><p class="empty">Carregando…</p></div>
+  <section class="transcript glass">
+    <div class="tx-head">
+      <h2>Transcrição</h2>
+      <button id="follow" class="chip on">Seguir áudio</button>
+    </div>
+    <div id="tx" tabindex="0"><p class="empty">Carregando…</p></div>
   </section>
 </main>
 
