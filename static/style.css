@@ -1,0 +1,32 @@
+:root{--bg:#1c1c1c;--fg:#e6e6e6;--mut:#a5a5a5;--card:rgba(40,40,40,.82);--acc:#d0d0d0}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--fg);font:17px/1.6 Georgia,"Times New Roman",serif}
+#bg{position:fixed;inset:0;z-index:-2;background:#2a2a2a}
+#bg .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;
+  transition:opacity 2.5s ease;filter:grayscale(1) contrast(.95);transform:scale(1.05)}
+#bg .slide.on{opacity:1;animation:kb 14s linear forwards}
+@keyframes kb{to{transform:scale(1.16) translate(-1.5%,-1%)}}
+#veil{position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(30,30,30,.72),rgba(20,20,20,.86))}
+main{max-width:780px;margin:0 auto;padding:40px 16px 80px}
+header{text-align:center;margin-bottom:28px}
+.tag{margin:0;text-transform:uppercase;letter-spacing:.2em;font-size:.75rem;color:var(--mut)}
+h1{margin:.3em 0 0;font-weight:normal;font-size:clamp(1.8rem,6vw,2.8rem)}
+h2{font-weight:normal;font-size:1.1rem;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin:0 0 12px}
+.player{position:sticky;top:12px;z-index:5;display:flex;align-items:center;gap:14px;padding:14px 18px;
+  background:var(--card);backdrop-filter:blur(8px);border:1px solid #555;border-radius:16px}
+button{font:inherit;cursor:pointer;color:var(--fg)}
+#play{flex:none;width:56px;height:56px;border-radius:50%;border:0;background:var(--acc);color:#1c1c1c;display:grid;place-items:center}
+#play svg{width:28px;height:28px;fill:#1c1c1c}
+#play:hover{background:#fff}
+.bar{flex:1;min-width:0}
+#seek{width:100%;accent-color:var(--acc)}
+.times{display:flex;justify-content:space-between;font-size:.8rem;color:var(--mut);font-family:system-ui,sans-serif}
+#speed{flex:none;min-width:54px;padding:8px 10px;border-radius:10px;border:1px solid #777;background:transparent;font-weight:bold}
+#speed.fast{background:var(--acc);color:#1c1c1c}
+.transcript{margin-top:26px;padding:22px;background:var(--card);backdrop-filter:blur(8px);border:1px solid #444;border-radius:16px}
+#tx p{margin:0 0 6px;padding:6px 10px;border-radius:8px;cursor:pointer;color:var(--mut);transition:.2s}
+#tx p:hover{color:var(--fg)}
+#tx p.now{background:rgba(255,255,255,.12);color:#fff}
+#tx p.empty{cursor:default}
+@media(max-width:520px){body{font-size:16px}.player{padding:10px 12px;gap:10px}#play{width:48px;height:48px}}

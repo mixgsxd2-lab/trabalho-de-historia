@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: podcast-holocausto-pos-guerra
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-build.txt && python transcribe.py
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: WHISPER_MODEL
+        value: base

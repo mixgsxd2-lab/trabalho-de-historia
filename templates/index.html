@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holocausto: o pós-guerra</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div id="bg"></div>
+<div id="veil"></div>
+
+<main>
+  <header>
+    <p class="tag">Podcast · História</p>
+    <h1>Holocausto: o pós-guerra</h1>
+  </header>
+
+  <section class="player">
+    <button id="play" aria-label="Tocar">
+      <svg id="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="ico-pause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <div class="bar">
+      <input id="seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posição">
+      <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    </div>
+    <button id="speed" aria-label="Velocidade">1x</button>
+    <audio id="audio" src="{{ url_for('static', filename='audio/podcast.mp3') }}" preload="metadata"></audio>
+  </section>
+
+  <section class="transcript">
+    <h2>Transcrição</h2>
+    <div id="tx"><p class="empty">Carregando…</p></div>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
